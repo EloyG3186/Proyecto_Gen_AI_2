@@ -91,10 +91,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const apellido = document.getElementById("apellido").value.trim();
         const telefono = document.getElementById("telefono").value.trim();
         const correo = document.getElementById("correo").value.trim();
-        const bootcampSelect = document.getElementById("bootcamp");
+        //const bootcampSelect = document.getElementById("bootcamp");
         const comentarios = document.getElementById("comentarios").value.trim();
 
-        const bootcamps = Array.from(bootcampSelect.selectedOptions).map(option => option.value);
+        const bootcampCheckboxes = document.querySelectorAll("#bootcamp input[type='checkbox']:checked");
+        //const bootcamps = Array.from(bootcampSelect.selectedOptions).map(option => option.value);
+        const bootcamps = Array.from(bootcampCheckboxes).map(checkbox => checkbox.value);
+
 
         if (nombre.length < 3 || apellido.length < 3) {
             alert("El nombre y apellido deben tener más de 3 caracteres.");
@@ -131,14 +134,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Obtener recomendación al hacer clic en el botón btnRecomendar
     btnRecomendar.addEventListener("click", async () => {
-        const bootcampSelect = document.getElementById("bootcamp");
-        const bootcamps = Array.from(bootcampSelect.selectedOptions).map(option => option.value);
+        //const bootcampSelect = document.getElementById("bootcamp");
+        const bootcampCheckboxes = document.querySelectorAll("#bootcamp input[type='checkbox']:checked");
+        const bootcamps = Array.from(bootcampCheckboxes).map(checkbox => checkbox.value);
 
         if (bootcamps.length === 0) {
-            alert("Debe seleccionar al menos un bootcamp.");
+            alert("Debe seleccionar al menos un tema de interés.");
             return;
         }
 
+        if (bootcamps.length === 0) {
+            alert("Debe seleccionar al menos un tema de interés.");
+            return;
+        }
+
+        console.log("Bootcamps seleccionados: ", bootcamps);
         const recomendacionTexto = await obtenerRecomendacionOpenAI(bootcamps);
         recomendacion.innerText = "Recomendación: " + recomendacionTexto;
         console.log(recomendacionTexto);
@@ -153,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function obtenerRecomendacionOpenAI(temas) {
         console.log(import.meta.env);  // Para probar si se cargan las variables de entorno 
         const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-        console.log("ApiKey: ",apiKey);  // Para probar si la clave se carga correctamente
+        console.log("ApiKey: ", apiKey);  // Para probar si la clave se carga correctamente
 
         const url = "https://api.openai.com/v1/chat/completions";
         const data = {
@@ -164,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 content: "Eres un asistente experto en educación y tecnología."
             }, {
                 role: "user",
-                content: `Basado en los siguientes temas de interés: ${temas.join(", ")}, recomienda un bootcamp adecuado.`
+                content: `Basado en los siguientes temas de interés: ${temas.join(", ")}, recomienda un bootcamp adecuado entre: Full Stack Developer, Data Analytics y Data Sciense.`
             }],
             max_tokens: 100
         };

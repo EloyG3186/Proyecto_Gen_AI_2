@@ -15,11 +15,15 @@
 
 <body class="bg-gray-100 text-gray-900">
 
-    <header class="bg-blue-600 text-white py-6">
+    <header class="bg-blue-600 text-white py-6 px-4">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
 
             <!-- Título -->
-            <h1 class="text-2xl md:text-3xl font-bold">Coding Bootcamps ESPOL: Aprende Programación y Data Science</h1>
+            <div class="w-full md:w-auto text-center md:text-left">
+                <h1 class="text-2xl md:text-3xl font-bold">Coding Bootcamps ESPOL: Aprende Programación y Data Science
+                </h1>
+
+            </div>
 
             <!-- Botones -->
             <div class="flex space-x-4 mt-4 md:mt-0">
@@ -359,7 +363,8 @@
 
     <!-- MODAL DE REGISTRO -->
     <div id="modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden">
-        <div id="modalContent" class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl resizable max-h-full overflow-y-auto">
+        <div id="modalContent"
+            class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl resizable max-h-full overflow-y-auto ">
             <div id="modalHeader"
                 class="cursor-move bg-blue-600 text-white p-2 rounded-t-lg flex justify-between items-center">
                 <h2 class="text-xl font-semibold">Registro al Bootcamp</h2>
@@ -372,29 +377,110 @@
                     <input type="tel" id="telefono" placeholder="Teléfono" class="w-full p-2 border rounded" required>
                     <input type="email" id="correo" placeholder="Correo Electrónico" class="w-full p-2 border rounded"
                         required>
-                    <label class="block font-semibold">Bootcamps de interés:</label>
-                    <select id="bootcamp" multiple class="w-full p-2 border rounded" required>
-                        <option value="Desarrollo Web">Desarrollo Web</option>
-                        <option value="Bases de Datos">Bases de Datos</option>
-                        <option value="Seguridad Informática">Seguridad Informática</option>
-                    </select>
-                    <textarea id="comentarios" placeholder="Comentarios (opcional)"
-                        class="w-full p-2 border rounded"></textarea>
-                    <button type="submit"
-                        class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Enviar</button>
-                </form>
-                <button id="btnRecomendar" type="button"
-                    class="mt-4 bg-blue-500 text-white w-full px-4 py-2 rounded-lg hover:bg-blue-600">Obtener
-                    Recomendación</button>
-                <p id="recomendacion" class="mt-2 text-sm text-gray-700"></p>
-                <button id="closeModal" class="mt-4 w-full bg-red-600 text-white p-2 rounded hover:bg-red-700">
-                    Cerrar
-                </button>
+                    <label class="block font-semibold">Temas de interés:</label>
+
+                    <div id="bootcamp" multiple class="flex flex-row p-2" required>
+
+
+                        <div class="w-full flex flex-col p-2 border rounded">
+                            <div>
+                                <label for="">HTML</label>
+                                <input type="checkbox" value="HTML"></input>
+                            </div>
+
+                            <div>
+                                <label for="">CSS</label>
+                                <input type="checkbox" value="CSS"></input>
+                            </div>
+
+                            <div>
+                                <label for="">JavaScript</label>
+                                <input type="checkbox" value="JavaScript"></input>
+                            </div>
+
+                            <div>
+                                <label for="">Python</label>
+                                <input type="checkbox" value="Python"></input>
+                            </div>
+
+                            <div>
+                                <label for="">Bases de Datos</label>
+                                <input type="checkbox" value="Bases de Datos"></input>
+                            </div>
+                        </div>
+
+                        <div class="w-full flex flex-col p-2 border rounded">
+                            <div>
+                                <label for="">Power Bi</label>
+                                <input type="checkbox" value="Power Bi"></input>
+                            </div>
+
+                            <div>
+                                <label for="">Tableau</label>
+                                <input type="checkbox" value="Tableau"></input>
+                            </div>
+
+                            <div>
+                                <label for="">QlikView</label>
+                                <input type="checkbox" value="QlickView"></input>
+                            </div>
+
+                            <div>
+                                <label for="">SQL</label>
+                                <input type="checkbox" value="SQL"></input>
+                            </div>
+
+                            <div>
+                                <label for="">Excel</label>
+                                <input type="checkbox" value="Excel"></input>
+                            </div>
+                        </div>
+
+
+                        <div class="w-full flex flex-col p-2 border rounded">
+                            <div>
+                                <label for="">C#</label>
+                                <input type="checkbox" value="C#"></input>
+                            </div>
+
+                            <div>
+                                <label for="">Google Data Studio</label>
+                                <input type="checkbox" value="Google Data Studio"></input>
+                            </div>
+
+                            <div>
+                                <label for="">Java</label>
+                                <input type="checkbox" value="Java"></input>
+                            </div>
+
+                            <div>
+                                <label for="">Apache Hadoop</label>
+                                <input type="checkbox" value="Apache Hadoop"></input>
+                            </div>
+
+                            <div>
+                                <label for="">React</label>
+                                <input type="checkbox" value="React"></input>
+                            </div>
+                        </div>
+                    </div>
+
             </div>
+
+            <textarea id="comentarios" placeholder="Comentarios (opcional)"
+                class="w-full p-2 border rounded"></textarea>
+            <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Enviar</button>
+            </form>
+            <button id="btnRecomendar" type="button"
+                class="mt-4 bg-blue-500 text-white w-full px-4 py-2 rounded-lg hover:bg-blue-600">Obtener
+                Recomendación</button>
+            <p id="recomendacion" class="mt-2 text-sm text-gray-700"></p>
+            <button id="closeModal" class="mt-4 w-full bg-red-600 text-white p-2 rounded hover:bg-red-700">
+                Cerrar
+            </button>
         </div>
     </div>
-
-
+    </div>
 
     <!-- SECCIÓN DE CONTACTO -->
     <section class="bg-gray-900 text-white text-center py-12">
